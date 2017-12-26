@@ -1,0 +1,163 @@
+body {
+    background: -moz-linear-gradient(45deg, rgba(255,173,92,1) 0%, rgba(255,173,92,1) 1%, rgba(212,96,214,1) 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(255,173,92,1)), color-stop(1%, rgba(255,173,92,1)), color-stop(100%, rgba(212,96,214,1))); /* safari4+,chrome */
+    background: -webkit-linear-gradient(45deg, rgba(255,173,92,1) 0%, rgba(255,173,92,1) 1%, rgba(212,96,214,1) 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(45deg, rgba(255,173,92,1) 0%, rgba(255,173,92,1) 1%, rgba(212,96,214,1) 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(45deg, rgba(255,173,92,1) 0%, rgba(255,173,92,1) 1%, rgba(212,96,214,1) 100%); /* ie10+ */
+    background: linear-gradient(45deg, rgba(255,173,92,1) 0%, rgba(255,173,92,1) 1%, rgba(212,96,214,1) 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#D460D6', endColorstr='#FFAD5C',GradientType=1 ); /* ie6-9 */
+}
+.game-menu {
+    background-color: rgba(16, 16, 16, 0.1);
+}
+
+.game-link {
+    display: none;
+}
+
+.login-form {
+    margin-top: 200px;
+}
+
+.greeting-card {
+    margin-top: 200px;
+    color: #fff;
+    text-align: center;
+}
+
+.greeting-card .intro-lead-in{
+    font-size: 62px;
+
+}
+
+.greeting-card .intro-heading{
+    font-size: 28px;
+
+}
+
+.login-header {
+    background-image: url("../img/login.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    padding: 50px;
+}
+
+@media only screen and (max-width: 991px) {
+    .game-list {
+        display: none;
+    }
+
+    .game-link {
+        display: block;
+    }
+}
+
+.portfolio {
+    font-family: Changa, Arial, sans-serif!important;
+}
+
+.terms-of-use {
+    font-size: 11px;
+    background-color: rgba(34, 34, 34, 0.8);
+    padding: 10px;
+}
+
+.placeholder {
+    height: 70vh;
+}
+
+.red {
+    background: rgba(255,93,177,1);
+    background: -moz-linear-gradient(left, rgba(255,93,177,1) 0%, rgba(241,15,132,1) 85%, rgba(239,1,124,1) 100%);
+    background: -webkit-linear-gradient(left, rgba(255,93,177,1) 0%, rgba(241,15,132,1) 85%, rgba(239,1,124,1) 100%);
+    background: -o-linear-gradient(left, rgba(255,93,177,1) 0%, rgba(241,15,132,1) 85%, rgba(239,1,124,1) 100%);
+    background: -ms-linear-gradient(left, rgba(255,93,177,1) 0%, rgba(241,15,132,1) 85%, rgba(239,1,124,1) 100%);
+    background: linear-gradient(to right, rgba(255,93,177,1) 0%, rgba(241,15,132,1) 85%, rgba(239,1,124,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5db1', endColorstr='#ef017c', GradientType=1 );
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+}
+
+.btn-primary, .btn-danger, .btn-success {
+    cursor: pointer;
+}
+
+.btn-unsubscribe {
+    margin-top: 10px;
+}
+
+.btn-unsubscribe .btn {
+    margin: 5px;
+}
+
+.msp-list {
+    text-align: center;
+}
+
+.list-inline {
+    padding-left: 20px;
+}
+.list-inline-item {
+    padding-left: 10px;
+}
+
+.msp {
+    height: 70px;
+    width: 70px;
+    background-color: #fff;
+}
+
+.msp-vodafone {
+    background-image: url('../img/msp/voda.png');
+    background-size: cover;
+    background-position: center center;
+}
+
+.msp-orange {
+    background-image: url('../img/msp/orange.png');
+    background-size: cover;
+    background-position: center center;
+}
+
+.msp-etisalat {
+    background-image: url('../img/msp/etisalat.png');
+    background-size: cover;
+    background-position: center center;
+}
+
+@media only screen and (max-width: 320px){
+    .greeting-card {
+        margin-top: 170px;
+    }
+    .placeholder {
+        height: 80vh;
+    }
+}
+
+@media only screen and (min-width: 321px) and (max-width: 360px) {
+    .greeting-card {
+        margin-top: 160px;
+    }
+}
+
+.list-inline-item {
+	cursor: pointer;
+}
+
+.list-inline-item:focus {
+	outline: #3fffbf solid;
+}
+
+
+
+
+
+
+
+
