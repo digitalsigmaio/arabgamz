@@ -13,9 +13,7 @@
 
 Route::get('/', 'GameController@index')->name('home');
 
-Route::get('/porto', function () {
-   return view('portfolio');
-});
+
 
 Route::get('/login', function () {
     return view('login');
