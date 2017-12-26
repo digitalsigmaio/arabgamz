@@ -36,3 +36,6 @@ Route::get('/deleteConfirm', 'SubscribeController@deleteConfirm')->name('deleteC
 
 Route::get('/game')->name('game');
 Route::get('/game/{id}', 'FileController@getFile');
+
+
+Route::get('/encrypt', 'SubscribeController@encrypt');

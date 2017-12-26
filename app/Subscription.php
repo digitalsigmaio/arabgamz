@@ -175,7 +175,8 @@ class Subscription
 
         if($result){
             if ($result->StatusCode == self::SUCCESS){
-                return $result->TextList;
+                dd($result);
+                // return $result->TextList;
             } else {
                 return false;
             }

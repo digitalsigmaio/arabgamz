@@ -151,4 +151,11 @@ class SubscribeController extends Controller
     {
         //
     }
+
+    public function encrypt()
+    {
+        $subscription = new Subscription;
+        $encryption = $subscription->encrypt(['manson']);
+        return $encryption;
+    }
 }
