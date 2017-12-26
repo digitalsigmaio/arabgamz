@@ -156,6 +156,6 @@ class SubscribeController extends Controller
     {
         $subscription = new Subscription;
         $encryption = $subscription->encrypt(['manson']);
-        return $encryption;
+        return response()->json(['data' => $encryption]);
     }
 }
