@@ -5,6 +5,8 @@ namespace App;
 
 
 
+use Illuminate\Http\Exceptions\HttpResponseException;
+
 class Subscription
 {
     /*
@@ -175,10 +177,9 @@ class Subscription
 
         if($result){
             if ($result->StatusCode == self::SUCCESS){
-                dd($result);
-                // return $result->TextList;
+                return $result->TextList;
             } else {
-                return false;
+                return $result->Text;
             }
         } else {
             return false;
@@ -241,7 +242,7 @@ class Subscription
         if($response){
             return json_decode($response);
         } else {
-            return false;
+            return $x = new HttpResponseException($response);
         }
     }
 
