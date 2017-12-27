@@ -12,13 +12,13 @@ class Subscription
      *
      * @var string
      * */
-    const REQUEST_ENDPOINT = "https://umvas.vlserv.com/BillingPlatform/VLApi/api/BillingAPI/RequestPin";
+    const REQUEST_ENDPOINT = "http://umvas.vlserv.com/BillingPlatformUAT/VLApi/api/BillingAPI/RequestPin";
     /*
      * Confirm endpoint
      *
      * @var string
      * */
-    const CONFIRM_ENDPOINT = "https://umvas.vlserv.com/BillingPlatform/VLApi/api/BillingAPI/ConfirmPin";
+    const CONFIRM_ENDPOINT = "http://umvas.vlserv.com/BillingPlatformUAT/VLApi/api/BillingAPI/ConfirmPin";
     /*
      * Unsubscribe endpoint
      *
