@@ -5,6 +5,8 @@ namespace App;
 
 
 
+use GuzzleHttp\Client;
+
 class Subscription
 {
     /*
@@ -170,19 +172,11 @@ class Subscription
             "Password" => self::PASSWORD,
             "TextList" => $textList
         ];
+        $client = new Client();
+        $res = $client->request('POST', self::ENCRYPTION_ENDPOINT, $body);
 
-        $result = $this->curlRequest($body);
 
-        if($result){
-            if ($result->StatusCode == self::SUCCESS){
-                dd($result);
-                // return $result->TextList;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
+        dd($res);
     }
 
     /*
