@@ -147,7 +147,7 @@ class Subscription
     const HEADERS = [
         'Accept' => 'application/json',
         'Content-Type' => 'application/json',
-        'cache-control' => 'no-cache'
+        'Cache-Control' => 'no-cache',
     ];
 
     public $pinCode;
@@ -201,7 +201,7 @@ class Subscription
         $body = [
             "Username" => self::USERNAME,
             "Password" => self::PASSWORD,
-            "TextList" => $textList
+            "TextList" => $textList,
         ];
 
         $result = $this->curlRequest($body);
@@ -237,7 +237,6 @@ class Subscription
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($body));
 
         $response = curl_exec($ch);
-
         curl_close($ch);
         if($response){
             return json_decode($response);
