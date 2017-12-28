@@ -147,9 +147,9 @@ class Subscription
      * @var array
      * */
     const HEADERS = [
-        'Accept' => 'application/json',
-        'Content-Type' => 'application/json',
-        'Cache-Control' => 'no-cache',
+        'Accept: application/json',
+        'Content-Type: application/json',
+        'Cache-Control: no-cache',
     ];
 
     public $pinCode;
