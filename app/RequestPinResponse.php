@@ -44,7 +44,7 @@ class RequestPinResponse extends Response
             $response->Text,
             $response->RequestId,
             $response->CurrencyCode,
-            $response->amount
+            $response->Amount
         ]);
 
         $this->statusCode   = $textList[0];
