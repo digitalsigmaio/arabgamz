@@ -12,18 +12,35 @@ class RequestPinResponse extends Response
      * @var string
      * */
     const  EMPTY_USERNAME_OR_PASSWORD = "1";
+
+    /*
+     * Status code for response
+     *
+     * @var string
+     * */
+    public $statusCode;
+
+    /*
+     * Text describing status code
+     *
+     * @var string
+     * */
+    public $text;
+
     /*
      * Request id for http://arabgamz.com
      *
      * @var string
      * */
     public $requestId;
+
     /*
      * Currency code for transaction
      *
      * @var string
      * */
     public $currencyCode;
+
     /*
      * Amount of transactions in default currency
      *
