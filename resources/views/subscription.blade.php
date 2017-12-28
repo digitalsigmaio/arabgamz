@@ -30,7 +30,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" id="number" name="number" type="text" placeholder="رقمك *" required data-validation-required-message=".من فضلك أدخل رقمك">
+                        <input class="form-control" id="ani" name="ani" type="text" placeholder="رقمك *" required data-validation-required-message=".من فضلك أدخل رقمك">
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>
@@ -41,5 +41,20 @@
                 </div>
             </div>
         </form>
+        @if($errors->any())
+            <hr>
+            <div class="row">
+                <div class="alert alert-dismissible alert-danger col-md-12" style="text-align: right">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
     </div>
+
+
 @endsection

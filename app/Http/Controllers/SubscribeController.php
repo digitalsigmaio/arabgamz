@@ -36,7 +36,7 @@ class SubscribeController extends Controller
      */
     public function sendRequest(Request $request)
     {
-        $mobile = $request->mobile;
+        $mobile = $request->ani;
         switch ($request->operator){
             case 1:
                 $operator_key = Subscription::ORANGE_KEY;
@@ -54,19 +54,23 @@ class SubscribeController extends Controller
                 $operator_key = null;
                 $operator_id  = null;
         }
-
         if(strlen($mobile) == 11){
             $ani = Subscription::EGYPT_KEY . $mobile;
+
             $requestPin = new RequestPin($ani, $operator_id);
             $requestResponse = $requestPin->sendRequestPin();
             if($requestResponse->success()){
+                dd($requestResponse);
                 $requestId = $requestResponse->requestId;
                 return redirect()->route('subscribeConfirm', compact($requestId));
+            } else {
+                dd($requestResponse);
             }
 
-        } elseif (strlen($mobile) == 9){
+        } elseif (strlen($mobile) == 8){
             if ($operator_key != null) {
                 $ani = Subscription::EGYPT_KEY . $operator_key . $mobile;
+
                 $requestPin = new RequestPin($ani, $operator_id);
                 $requestResponse = $requestPin->sendRequestPin();
                 if($requestResponse->success()){
@@ -75,9 +79,9 @@ class SubscribeController extends Controller
                 }
             }
         } else {
-            return redirect()->back([ 'error'=> 'من فضلك تحقق من الرقم الذي أدخلته']);
+            return redirect()->back()->withErrors([ 'من فضلك تحقق من الرقم الذي أدخلته']);
         }
-        return redirect()->back(['error' => 'خطأ فى إرسال طلبك']);
+        return redirect()->back()->withErrors(['خطأ فى إرسال طلبك']);
     }
 
     public function subscribeConfirm()

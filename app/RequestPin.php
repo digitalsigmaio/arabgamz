@@ -93,7 +93,7 @@ class RequestPin extends Subscription
     private function requestPin($requestPinList)
     {
 
-        $response = $this->curlRequest($requestPinList);
+        $response = $this->curlRequest($requestPinList, self::REQUEST_ENDPOINT);
 
         if ($response){
             $requestPinResponse = new RequestPinResponse($response);
