@@ -60,11 +60,11 @@ class SubscribeController extends Controller
             $requestPin = new RequestPin($ani, $operator_id);
             $requestResponse = $requestPin->sendRequestPin();
             if($requestResponse->success()){
-                return $requestResponse;
+                return response()->json($requestResponse);
                 //$requestId = $requestResponse->requestId;
                 //return redirect()->route('subscribeConfirm', compact($requestId));
             } else {
-                return $requestResponse;
+                return response()->json($requestResponse);
             }
 
         } elseif (strlen($mobile) == 8){
