@@ -69,8 +69,6 @@ class RequestPin extends Subscription
     public function __construct(string $ani, string $operator_id)
     {
         $textList = $this->encrypt([
-            self::USERNAME,
-            self::PASSWORD,
             $ani,
             self::LANGUAGE_ID,
             $operator_id,
@@ -78,14 +76,12 @@ class RequestPin extends Subscription
             self::TOKEN_TYPE,
             self::SERVICE_TYPE
         ]);
-        $this->username    = $textList[0];
-        $this->password    = $textList[1];
-        $this->ani         = $textList[2];
-        $this->languageId  = $textList[3];
-        $this->operatorId  = $textList[4];
-        $this->serviceId   = $textList[5];
-        $this->tokenType   = $textList[6];
-        $this->serviceType = $textList[7];
+        $this->ani         = $textList[0];
+        $this->languageId  = $textList[1];
+        $this->operatorId  = $textList[2];
+        $this->serviceId   = $textList[3];
+        $this->tokenType   = $textList[4];
+        $this->serviceType = $textList[5];
     }
 
     /*
@@ -117,17 +113,17 @@ class RequestPin extends Subscription
     public function sendRequestPin()
     {
 
-            $requestPinList = [
-                'Username'      => $this->username,
-                'Password'      => $this->password,
-                'ANI'           => $this->ani,
-                'LanguageId'    => $this->languageId,
-                'OperatorId'    => $this->operatorId,
-                'ServiceId'     => $this->serviceId,
-                'TokenType'     => $this->tokenType,
-                'ServiceType'   => $this->serviceType
-            ];
-            return $this->requestPin($requestPinList);
+        $requestPinList = [
+            'Username'      => self::USERNAME,
+            'Password'      => self::PASSWORD,
+            'ANI'           => $this->ani,
+            'LanguageId'    => $this->languageId,
+            'OperatorId'    => $this->operatorId,
+            'ServiceId'     => $this->serviceId,
+            'TokenType'     => $this->tokenType,
+            'ServiceType'   => $this->serviceType
+        ];
+        return $this->requestPin($requestPinList);
 
     }
 }

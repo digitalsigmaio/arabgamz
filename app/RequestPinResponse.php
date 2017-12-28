@@ -39,7 +39,7 @@ class RequestPinResponse extends Response
      * */
     public function __construct(object $response)
     {
-        $textList = $this->encrypt([
+        $textList = $this->decrypt([
             $response->StatusCode,
             $response->Text,
             $response->RequestId,

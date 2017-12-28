@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="col-lg-4 col-md-6 mx-auto login-form" dir="rtl">
-        <form id="subscribeForm" action="#" method="post">
+        <form id="subscribeForm" action="{{ route('request') }}" method="post">
+            {{ csrf_field() }}
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-gourp msp-list">

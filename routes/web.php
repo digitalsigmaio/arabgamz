@@ -15,9 +15,7 @@ Route::get('/', 'GameController@index')->name('home');
 
 
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+Route::get('/login', 'GameController@login')->name('login');
 
 Route::post('/login', 'UserController@login')->name('login');
 Route::get('/logout', 'UserController@logout')->name('logout');
@@ -28,6 +26,7 @@ Route::get('/subscribe', 'SubscribeController@index')->name('subscribe');
 
 Route::get('/unsubscribe', 'SubscribeController@unsubscribe')->name('unsubscribe');
 Route::get('/subscription', 'SubscribeController@create')->name('subscription');
+Route::post('/subscription', 'SubscribeController@sendRequest')->name('request');
 Route::get('/subscribeConfirm', 'SubscribeController@subscribeConfirm')->name('subscribeConfirm');
 Route::get('/greetings', 'SubscribeController@greetings')->name('greetings');
 Route::get('/deleteConfirm', 'SubscribeController@deleteConfirm')->name('deleteConfirm');

@@ -173,7 +173,7 @@ class Subscription
             "TextList" => $textList
         ];
 
-        $result = $this->curlRequest($body);
+        $result = $this->curlRequest($body, self::ENCRYPTION_ENDPOINT);
 
         if($result){
             if ($result->StatusCode == self::SUCCESS){
@@ -205,7 +205,7 @@ class Subscription
             "TextList" => $textList,
         ];
 
-        $result = $this->curlRequest($body);
+        $result = $this->curlRequest($body, self::DECRYPTION_ENDPOINT);
 
         if($result){
             if ($result->StatusCode == self::SUCCESS){
@@ -223,7 +223,7 @@ class Subscription
      * @param array
      * @return array | bool
      * */
-    protected function curlRequest($body)
+    protected function curlRequest(array $body, string $url)
     {
         /*
          * HttpRequest with cURL protocol
@@ -233,7 +233,7 @@ class Subscription
         $curl = curl_init();
 
         curl_setopt_array($curl, [
-            CURLOPT_URL => self::ENCRYPTION_ENDPOINT,
+            CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -245,7 +245,6 @@ class Subscription
         ]);
 
         $response = curl_exec($curl);
-        $err = curl_error($curl);
 
         curl_close($curl);
         if($response){

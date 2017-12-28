@@ -32,6 +32,11 @@ class GameController extends Controller
         //
     }
 
+    public function login()
+    {
+        return view('login');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
