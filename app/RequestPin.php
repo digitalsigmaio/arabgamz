@@ -99,7 +99,7 @@ class RequestPin extends Subscription
             $requestPinResponse = new RequestPinResponse($response);
             return $requestPinResponse;
         } else {
-            return false;
+            return response()->json(['error' => 'Bad request']);
         }
 
     }

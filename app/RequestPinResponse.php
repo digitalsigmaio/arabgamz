@@ -37,7 +37,7 @@ class RequestPinResponse extends Response
      * @param object $data
      * @return void
      * */
-    public function __construct(object $response)
+    public function __construct($response)
     {
         $textList = $this->decrypt([
             $response->StatusCode,
