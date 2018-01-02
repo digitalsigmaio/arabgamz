@@ -98,14 +98,16 @@ class RequestPin extends Subscription
     {
 
         $response = $this->curlRequest($requestPinList, self::REQUEST_ENDPOINT);
-
-        if (isset($response->StatusCode) && $response->StatusCode == self::SUCCESS){
+        if($response != null){
             $requestPinResponse = new RequestPinResponse($response);
-            return $requestPinResponse;
-        } else {
-            $error = $this->errorHandler($response->StatusCode);
-            return $error;
+            if ($requestPinResponse->success()){
+                return $requestPinResponse;
+            } else {
+                $error = $this->errorHandler($requestPinResponse->statusCode);
+                return $error;
+            }
         }
+        return null;
 
     }
 

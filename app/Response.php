@@ -11,13 +11,13 @@ class Response extends Subscription
      *
      * @var string
      * */
-    protected $statusCode;
+    public $statusCode;
     /*
      * Description of response status code
      *
      * @var string
      * */
-    protected $text;
+    public $text;
 
     /*
      * Check if request succeeded or failed
