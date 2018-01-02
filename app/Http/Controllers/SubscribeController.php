@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\RequestPin;
+use App\RequestPinResponse;
 use Illuminate\Http\Request;
 use App\Subscription;
 
@@ -59,7 +60,7 @@ class SubscribeController extends Controller
 
             $requestPin = new RequestPin($ani, $operator_id);
             $requestResponse = $requestPin->sendRequestPin();
-            if($requestResponse->success()){
+            if(is_a($requestResponse, 'App\RequestPinResponse')){
                 //return response()->json($requestResponse);
                 $requestId = $requestResponse->requestId;
                 return redirect()->route('subscribeConfirm', compact($requestId));
@@ -73,7 +74,7 @@ class SubscribeController extends Controller
 
                 $requestPin = new RequestPin($ani, $operator_id);
                 $requestResponse = $requestPin->sendRequestPin();
-                if($requestResponse->success()){
+                if(is_a($requestResponse, 'App\RequestPinResponse')){
                     $requestId = $requestResponse->requestId;
                     return redirect()->route('subscribeConfirm', compact($requestId));
                 } else {
