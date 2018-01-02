@@ -60,9 +60,9 @@ class SubscribeController extends Controller
             $requestPin = new RequestPin($ani, $operator_id);
             $requestResponse = $requestPin->sendRequestPin();
             if($requestResponse->success()){
-                return response()->json($requestResponse);
-                //$requestId = $requestResponse->requestId;
-                //return redirect()->route('subscribeConfirm', compact($requestId));
+                //return response()->json($requestResponse);
+                $requestId = $requestResponse->requestId;
+                return redirect()->route('subscribeConfirm', compact($requestId));
             } else {
                 return redirect()->back()->withErrors([$requestResponse]);
             }
