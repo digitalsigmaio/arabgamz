@@ -715,104 +715,107 @@ class Subscription
      */
     protected function errorHandler(string $status_code)
     {
-        foreach (self::$commonErrors as $key => $value){
-            if ($status_code == $key){
-                Log::useDailyfiles(storage_path() . '/logs/serverErrors.log');
-                Log::info([
-                    'error' => $value,
-                ]);
-
-                return 'خطأ في النظام حاول مرة أخرى بعد قليل';
-            }
-        }
-
-        foreach (self::$requestPinErrors as $key => $value){
-            if ($status_code == $key){
-                if (
-                $key == self::INVALID_AMOUNT ||
-                $key == self::WRONG_FORMAT ||
-                $key == self::FRAUD_MAX_REQUEST_PER_ONE_MINUTE ||
-                $key == self::FRAUD_MAX_REQUEST_PER_ONE_DAY ||
-                $key == self::NON_SILENT_CHARGING_SERVICE ||
-                $key == self::NO_SILENT_CHARGING_PERMISSION ||
-                $key == self::INVALID_TOKEN_TYPE ||
-                $key == self::INVALID_SERVICE_TYPE
-                ){
-                    Log::useDailyfiles(storage_path() . '/logs/requestPinErrors.log');
+        if ($status_code != "0" || $status_code != null) {
+            foreach (self::$commonErrors as $key => $value) {
+                if ($status_code == $key) {
+                    Log::useDailyfiles(storage_path() . '/logs/serverErrors.log');
                     Log::info([
                         'error' => $value,
                     ]);
 
                     return 'خطأ في النظام حاول مرة أخرى بعد قليل';
-                } else {
+                }
+            }
+
+            foreach (self::$requestPinErrors as $key => $value) {
+                if ($status_code == $key) {
+                    if (
+                        $key == self::INVALID_AMOUNT ||
+                        $key == self::WRONG_FORMAT ||
+                        $key == self::FRAUD_MAX_REQUEST_PER_ONE_MINUTE ||
+                        $key == self::FRAUD_MAX_REQUEST_PER_ONE_DAY ||
+                        $key == self::NON_SILENT_CHARGING_SERVICE ||
+                        $key == self::NO_SILENT_CHARGING_PERMISSION ||
+                        $key == self::INVALID_TOKEN_TYPE ||
+                        $key == self::INVALID_SERVICE_TYPE
+                    ) {
+                        Log::useDailyfiles(storage_path() . '/logs/requestPinErrors.log');
+                        Log::info([
+                            'error' => $value,
+                        ]);
+
+                        return 'خطأ في النظام حاول مرة أخرى بعد قليل';
+                    } else {
+                        return $value;
+                    }
+                }
+            }
+
+            foreach (self::$confirmPinErrors as $key => $value) {
+                if ($status_code == $key) {
+                    if (
+                        $key == self::INVALID_REQUEST_ID ||
+                        $key == self::PINCODE_EXPIRED ||
+                        $key == self::EMPTY_REQUEST_ID ||
+                        $key == self::EMPTY_PINCODE ||
+                        $key == self::SILENT_CHARGING_TOKEN_EXPIRED ||
+                        $key == self::NON_WITHOUT_CHARGING_SERVICE ||
+                        $key == self::NON_CONFIRM_WITHOUT_CHARGING_PERMISSION ||
+                        $key == self::INVALID_CHARGE_TYPE
+                    ) {
+                        Log::useDailyfiles(storage_path() . '/logs/confirmPinErrors.log');
+                        Log::info([
+                            'error' => $value,
+                        ]);
+
+                        return 'خطأ في النظام حاول مرة أخرى بعد قليل';
+                    } else {
+                        return $value;
+                    }
+                }
+            }
+
+
+            foreach (self::$subscribeErrors as $key => $value) {
+                if ($status_code == $key) {
                     return $value;
                 }
             }
-        }
 
-        foreach (self::$confirmPinErrors as $key => $value){
-            if ($status_code == $key){
-                if(
-                $key == self::INVALID_REQUEST_ID ||
-                $key == self::PINCODE_EXPIRED ||
-                $key == self::EMPTY_REQUEST_ID ||
-                $key == self::EMPTY_PINCODE ||
-                $key == self::SILENT_CHARGING_TOKEN_EXPIRED ||
-                $key == self::NON_WITHOUT_CHARGING_SERVICE ||
-                $key == self::NON_CONFIRM_WITHOUT_CHARGING_PERMISSION ||
-                $key == self::INVALID_CHARGE_TYPE
-                ){
-                    Log::useDailyfiles(storage_path() . '/logs/confirmPinErrors.log');
+            foreach (self::$unsubscribeErrors as $key => $value) {
+                if ($status_code == $key) {
+                    return $value;
+                }
+            }
+
+            foreach (self::$getStatus as $key => $value) {
+                if ($status_code == $key) {
+                    Log::useDailyfiles(storage_path() . '/logs/getStatusErrors.log');
                     Log::info([
                         'error' => $value,
                     ]);
 
                     return 'خطأ في النظام حاول مرة أخرى بعد قليل';
-                } else {
-                    return $value;
                 }
             }
-        }
 
-        foreach (self::$subscribeErrors as $key => $value){
-            if($status_code == $key){
-                return $value;
+            foreach (self::$sendSmsError as $key => $value) {
+                if ($status_code == $key) {
+                    Log::useDailyfiles(storage_path() . '/logs/sendSmsErrors.log');
+                    Log::info([
+                        'error' => $value,
+                    ]);
+
+                    return 'خطأ في النظام حاول مرة أخرى بعد قليل';
+                }
             }
+        } else {
+            Log::useDailyfiles(storage_path() . '/logs/serverErrors.log');
+            Log::info([
+                'error' => 'Undefined server error',
+            ]);
+            return 'خطأ في النظام حاول مرة أخرى بعد قليل';
         }
-
-        foreach (self::$unsubscribeErrors as $key => $value){
-            if($status_code == $key){
-                return $value;
-            }
-        }
-
-        foreach (self::$getStatus as $key => $value){
-            if ($status_code == $key){
-                Log::useDailyfiles(storage_path() . '/logs/getStatusErrors.log');
-                Log::info([
-                    'error' => $value,
-                ]);
-
-                return 'خطأ في النظام حاول مرة أخرى بعد قليل';
-            }
-        }
-
-        foreach (self::$sendSmsError as $key => $value){
-            if ($status_code == $key){
-                Log::useDailyfiles(storage_path() . '/logs/sendSmsErrors.log');
-                Log::info([
-                    'error' => $value,
-                ]);
-
-                return 'خطأ في النظام حاول مرة أخرى بعد قليل';
-            }
-        }
-
-        Log::useDailyfiles(storage_path() . '/logs/serverErrors.log');
-        Log::info([
-            'error' => 'Undefined server error',
-        ]);
-        return 'خطأ في النظام حاول مرة أخرى بعد قليل';
     }
 
 }
