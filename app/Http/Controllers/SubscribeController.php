@@ -65,7 +65,7 @@ class SubscribeController extends Controller
                 $requestId = $requestResponse->requestId;
                 return redirect()->route('subscribeConfirm', compact($requestId));
             } else {
-                return redirect()->back()->withErrors([$requestResponse]);
+                return redirect()->back()->withErrors([$requestResponse->error]);
             }
 
         } elseif (strlen($mobile) == 8){
@@ -78,7 +78,7 @@ class SubscribeController extends Controller
                     $requestId = $requestResponse->requestId;
                     return redirect()->route('subscribeConfirm', compact($requestId));
                 } else {
-                    return redirect()->back()->withErrors([$requestResponse]);
+                    return redirect()->back()->withErrors([$requestResponse->error]);
                 }
             }
         } else {
