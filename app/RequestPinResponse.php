@@ -14,20 +14,6 @@ class RequestPinResponse extends Response
     const  EMPTY_USERNAME_OR_PASSWORD = "1";
 
     /*
-     * Status code for response
-     *
-     * @var string
-     * */
-    public $statusCode;
-
-    /*
-     * Text describing status code
-     *
-     * @var string
-     * */
-    public $text;
-
-    /*
      * Request id for http://arabgamz.com
      *
      * @var string
@@ -51,7 +37,7 @@ class RequestPinResponse extends Response
     /*
      * Create new instance of RequestPinResponse
      *
-     * @param object $data
+     * @param $response
      * @return void
      * */
     public function __construct($response)
@@ -63,12 +49,14 @@ class RequestPinResponse extends Response
             $response->CurrencyCode,
             $response->Amount
         ]);
+        if ($textList){
+            $this->statusCode   = $textList[0];
+            $this->text         = $textList[1];
+            $this->requestId    = $textList[2];
+            $this->currencyCode = $textList[3];
+            $this->amount       = $textList[4];
+        }
 
-        $this->statusCode   = $textList[0];
-        $this->text         = $textList[1];
-        $this->requestId    = $textList[2];
-        $this->currencyCode = $textList[3];
-        $this->amount       = $textList[4];
     }
 
 
