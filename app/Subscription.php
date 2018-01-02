@@ -703,7 +703,12 @@ class Subscription
         if($response){
             return json_decode($response);
         } else {
-            return $x = new HttpResponseException($response);
+            $x = new HttpResponseException($response);
+            Log::useDailyfiles(storage_path() . '/logs/httpRequestErrors.log');
+            Log::info([
+                'error' => $x,
+            ]);
+            return null;
         }
     }
 

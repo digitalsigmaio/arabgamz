@@ -74,31 +74,34 @@ class ConfirmPin extends Subscription
     }
 
     /*
-     * Sending requestPin to Vlink
+     * Sending confirmPin to Vlink
      *
-     * @param array $requestPinList
-     * @return App\RequestPinResponse | bool
+     * @param array $confirmPinList
+     * @return App\ConfirmPinResponse
      * */
     private function confirmPin($confirmPinList)
     {
 
         $response = $this->curlRequest($confirmPinList, self::CONFIRM_ENDPOINT);
-
-        if (isset($response->StatusCode) && $response->StatusCode == self::SUCCESS){
+        if($response != null){
             $confirmPinResponse = new ConfirmPinResponse($response);
-            return $confirmPinResponse;
-        } else {
-            $error = $this->errorHandler($response->StatusCode);
-            return $error;
+            if ($confirmPinResponse->success()){
+                return $confirmPinResponse;
+            } else {
+                $error = $this->errorHandler($confirmPinResponse->statusCode);
+                return $error;
+            }
         }
+
+        return null;
 
     }
 
     /*
-     * Setting requestPinList
+     * Setting ConfirmPinList
      *
      * @param void
-     * @return App\RequestPinResponse | bool
+     * @return App\ConfirmPinResponse | bool
      * */
     public function sendConfirmPin()
     {
