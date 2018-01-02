@@ -816,6 +816,8 @@ class Subscription
             ]);
             return 'خطأ في النظام حاول مرة أخرى بعد قليل';
         }
+
+        dd($status_code);
     }
 
 }
