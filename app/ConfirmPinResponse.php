@@ -40,16 +40,26 @@ class ConfirmPinResponse extends Response
     /*
      * Create new instance of ConfirmPinResponse
      *
-     * @var object $response
+     * @var $response
      * @return void
      * */
-    public function __construct(object $response)
+    public function __construct($response)
     {
-        $this->statusCode = $response->StatusCode;
-        $this->text = $response->Text;
-        $this->requestId = $response->RequestId;
-        $this->currencyCode = $response->CurrencyCode;
-        $this->amount = $response->Amount;
-        $this->data = $response->Data;
+        $textList = $this->decrypt([
+            $response->StatusCode,
+            $response->Text,
+            $response->RequestId,
+            $response->CurrencyCode,
+            $response->Amount,
+            $response->Data
+        ]);
+        if ($textList){
+            $this->statusCode   = $textList[0];
+            $this->text         = $textList[1];
+            $this->requestId    = $textList[2];
+            $this->currencyCode = $textList[3];
+            $this->amount       = $textList[4];
+            $this->data         = $textList[5];
+        }
     }
 }

@@ -76,12 +76,16 @@ class RequestPin extends Subscription
             self::TOKEN_TYPE,
             self::SERVICE_TYPE
         ]);
-        $this->ani         = $textList[0];
-        $this->languageId  = $textList[1];
-        $this->operatorId  = $textList[2];
-        $this->serviceId   = $textList[3];
-        $this->tokenType   = $textList[4];
-        $this->serviceType = $textList[5];
+
+        if($textList){
+            $this->ani         = $textList[0];
+            $this->languageId  = $textList[1];
+            $this->operatorId  = $textList[2];
+            $this->serviceId   = $textList[3];
+            $this->tokenType   = $textList[4];
+            $this->serviceType = $textList[5];
+        }
+
     }
 
     /*
@@ -95,11 +99,12 @@ class RequestPin extends Subscription
 
         $response = $this->curlRequest($requestPinList, self::REQUEST_ENDPOINT);
 
-        if ($response){
+        if (isset($response->StatusCode) && $response->StatusCode == self::SUCCESS){
             $requestPinResponse = new RequestPinResponse($response);
             return $requestPinResponse;
         } else {
-            return response()->json(['error' => 'Bad request']);
+            $error = $this->errorHandler($response->StatusCode);
+            return response()->json(['error' => $error]);
         }
 
     }

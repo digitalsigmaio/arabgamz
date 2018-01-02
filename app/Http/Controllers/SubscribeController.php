@@ -64,7 +64,7 @@ class SubscribeController extends Controller
                 //$requestId = $requestResponse->requestId;
                 //return redirect()->route('subscribeConfirm', compact($requestId));
             } else {
-                return response()->json($requestResponse);
+                return redirect()->back()->withErrors([$requestResponse]);
             }
 
         } elseif (strlen($mobile) == 8){
@@ -76,6 +76,8 @@ class SubscribeController extends Controller
                 if($requestResponse->success()){
                     $requestId = $requestResponse->requestId;
                     return redirect()->route('subscribeConfirm', compact($requestId));
+                } else {
+                    return redirect()->back()->withErrors([$requestResponse]);
                 }
             }
         } else {
@@ -84,14 +86,24 @@ class SubscribeController extends Controller
         return redirect()->back()->withErrors(['خطأ فى إرسال طلبك']);
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function subscribeConfirm()
     {
         return view('subscribeConfirmation');
     }
 
-    /*
-     * Greetings page
-     * */
+    public function confirmSubscription(Request $request)
+    {
+        $requestId = $request->requestId;
+        $pinCode = $request->pinCode;
+
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function greetings()
     {
         return view('greetings');
