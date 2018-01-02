@@ -89,7 +89,7 @@ class ConfirmPin extends Subscription
             return $confirmPinResponse;
         } else {
             $error = $this->errorHandler($response->StatusCode);
-            return response()->json(['error' => $error]);
+            return $error;
         }
 
     }
