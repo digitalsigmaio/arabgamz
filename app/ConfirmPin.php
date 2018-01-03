@@ -50,18 +50,19 @@ class ConfirmPin extends Subscription
     private $confirmationMessage;
 
     /*
-     * Create new RequestPin instance
+     * Create new ConfirmPin instance
      *
-     * @param string $ani
-     * @param string $operator_id
+     * @param string $requestId
+     * @param string $pinCode
+     * @param string $confirmMessage
      * @return void*/
-    public function __construct(string $requestId, string $pinCode)
+    public function __construct(string $requestId, string $pinCode, string $confirmMessage)
     {
         $textList = $this->encrypt([
             $requestId,
             $pinCode,
             self::CHARGE_TYPE,
-            self::CONFIRM_SMS
+            $confirmMessage
         ]);
 
         if($textList){
@@ -116,4 +117,6 @@ class ConfirmPin extends Subscription
         ];
         return $this->confirmPin($confirmPinList);
     }
+
+
 }
