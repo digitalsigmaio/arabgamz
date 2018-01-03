@@ -1,10 +1,9 @@
-@extends('layouts.master')
+@extends('layouts.subMaster')
 
 @section('content')
 
-    <div class="row login-header">
-        <div class="col-lg-4 mx-auto login-form" dir="rtl">
-            <form id="loginForm" action="login" method="post">
+        <div class="col-lg-4 col-md-6 mx-auto login-form" dir="rtl">
+            <form id="loginForm" action="{{ route('login') }}" method="post">
                 {{ csrf_field() }}
                 <div class="row">
                     <div class="col-md-12">
@@ -24,20 +23,21 @@
                     </div>
                 </div>
             </form>
-        </div>
-        @if($errors->any())
-            <hr>
-            <div class="row">
-                <div class="alert alert-dismissible alert-danger col-md-12" style="text-align: right">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <ul>
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
+
+            @if($errors->any())
+                <hr>
+                <div class="row">
+                    <div class="alert alert-dismissible alert-danger col-md-12" style="text-align: right">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        @endif
-    </div>
+            @endif
+        </div>
+
 
 @endsection
