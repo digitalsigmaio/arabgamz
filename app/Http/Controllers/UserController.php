@@ -110,12 +110,14 @@ class UserController extends Controller
             'password' => 'required'
         ]);
 
-        Auth::attempt([
+        if(Auth::attempt([
             'ani' => $request->number,
             'password' => $request->password
-        ]);
-
-        return redirect()->route('home');
+        ])){
+            return redirect()->route('home');
+        } else {
+            return redirect()->back()->withErrors(['تأكد من صحة المستخدم و كلمة السر']);
+        }
     }
 
 
