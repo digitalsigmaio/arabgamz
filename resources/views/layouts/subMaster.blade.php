@@ -80,7 +80,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">Arab Games</a>
+            <a class="navbar-brand js-scroll-trigger" href="{{ route('home') }}">Arab Games</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fa fa-bars"></i>
@@ -88,7 +88,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive" dir="rtl">
                 <ul class="navbar-nav text-right ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#">الرئيسية</a>
+                        <a class="nav-link js-scroll-trigger" href="{{ route('home') }}">الرئيسية</a>
                     </li>
                     @if(\Illuminate\Support\Facades\Auth::user())
                         <li class="nav-item">
