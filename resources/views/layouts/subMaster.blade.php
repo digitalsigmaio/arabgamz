@@ -94,6 +94,10 @@
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="{{ route('logout') }}">خروج</a>
                         </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="{{ route('login') }}">تسجيل دخول</a>
+                        </li>
                     @endif
                 </ul>
             </div>

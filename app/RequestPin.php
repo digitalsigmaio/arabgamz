@@ -130,7 +130,6 @@ class RequestPin extends Subscription
             'TokenType'     => $this->tokenType,
             'ServiceType'   => $this->serviceType
         ];
-        dd($requestPinList);
         return $this->requestPin($requestPinList);
 
     }
