@@ -43,8 +43,18 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $game = Game::create($request->all());
+        $game = new Game;
+
+        $game->name = $request->name;
+        $game->description = $request->description;
+        $game->src = $request->src;
+        $game->image = $request->image;
+
+        $game->save();
+
+        $category = $request->category;
+        $game->categories()->attach($category);
+
         return response()->json(['data' => $game], 200);
     }
 
