@@ -116,7 +116,7 @@ class UserController extends Controller
         ])){
             return redirect()->route('home');
         } else {
-            return redirect()->back()->withErrors(['تأكد من صحة المستخدم و كلمة السر']);
+            return redirect()->back()->withErrors(['تأكد من صحة رقمك و كلمة السر']);
         }
     }
 
