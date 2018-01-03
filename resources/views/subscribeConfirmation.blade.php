@@ -7,6 +7,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <input type="hidden" name="requestId" value="{{ $requestId }}">
+                    <input type="hidden" name="ani" value="{{ $ani }}">
+                    <input type="hidden" name="operator_id" value="{{ $operator_id }}">
                     <div class="form-group" style="color: #fff;text-align: right">
                         <label for="pinCode">أدخل ال Pin Code الذي يصل على رقمك لتأكيد الإشتراك</label>
                     </div>

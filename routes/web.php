@@ -15,9 +15,9 @@ Route::get('/', 'GameController@index')->name('home');
 
 
 
-Route::get('/login', 'GameController@login')->name('login');
 
-Route::post('/login', 'UserController@login')->name('login');
+Route::get('/login', 'UserController@login')->name('login');
+Route::post('/login', 'UserController@authenticate')->name('authentication');
 Route::get('/logout', 'UserController@logout')->name('logout');
 
 Route::post('/downloads', 'GameController@downloads');

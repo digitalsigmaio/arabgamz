@@ -473,12 +473,6 @@ class Subscription
      * @var string
      * */
     const CHARGE_TYPE = "1";
-    /**
-     * Default value for confirmation message
-     *
-     * @var string
-     */
-    const CONFIRM_SMS = "";
     /*
      * Default headers for HttpRequest
      *
@@ -823,4 +817,19 @@ class Subscription
         }
     }
 
+    /**
+     * Setting confirmation message
+     *
+     * @param string $password
+     * @param string $ani
+     *
+     * @return string
+     */
+    public static function confirmMessage(string $password, string $ani)
+    {
+        $message = "شكراَ لإشتراكك فى خدمة ArabGamz  يمكنك الوصول الى حسابك و الإستمتاع بالخدمة من خلال زيارة موقعنا  http://www.arabgamz.com" . "أسم المستخدم " . $ani . " كلمة السر " . $password
+            . " سوف يتم خصم 2 جنيه يوميا لكى تتمكن من إلغاء الإشتراك الخاص بكم الرجاء تسجيل دخول الحساب الخاص بك علي الرابط http://www.arabgamz.com/unsubscribe  والضغط على إلغاء الإشتراك أو أرسل كلمة STOP ARABGAMZ إلى 4565 لاى استفسار تواصل معنا  علي help@arabgamz.com";
+
+        return $message;
+    }
 }

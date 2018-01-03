@@ -95,21 +95,29 @@ class UserController extends Controller
         //
     }
 
-    public function login(Request $request)
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function login()
     {
-
-        if(Auth::attempt([
-            'ani' => $request->ani,
-            'password' => $request->password
-        ])){
-
-            return redirect()->route('home');
-        } else {
-            return response()->json(['message' => 'Error']);
-        }
-
-
+        return view('login');
     }
+
+
+    public function authenticate(Request $request) {
+        $this->validate($request, [
+            'number' => 'required',
+            'password' => 'required'
+        ]);
+
+        Auth::attempt([
+            'ani' => $request->number,
+            'password' => $request->password
+        ]);
+
+        return route('home');
+    }
+
 
     public function logout()
     {

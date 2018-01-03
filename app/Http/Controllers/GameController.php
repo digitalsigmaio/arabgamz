@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Game;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GameController extends Controller
 {
@@ -32,10 +34,6 @@ class GameController extends Controller
         //
     }
 
-    public function login()
-    {
-        return view('login');
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -97,9 +95,11 @@ class GameController extends Controller
 
     public function downloads(Request $request)
     {
+
         $game = Game::find($request->gameId);
-        $game->downloads += 1;
+        $game->downloads++;
         $game->save();
         return response()->json(['downloads' => $game->downloads], 200);
+
     }
 }
