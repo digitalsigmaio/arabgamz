@@ -115,7 +115,7 @@ class UserController extends Controller
             'password' => $request->password
         ]);
 
-        return route('home');
+        return redirect()->route('home');
     }
 
 
