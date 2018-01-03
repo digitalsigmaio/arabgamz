@@ -25,6 +25,19 @@
                 </div>
             </form>
         </div>
+        @if($errors->any())
+            <hr>
+            <div class="row">
+                <div class="alert alert-dismissible alert-danger col-md-12" style="text-align: right">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
     </div>
 
 @endsection
