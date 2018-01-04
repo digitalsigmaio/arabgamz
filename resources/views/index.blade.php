@@ -93,7 +93,7 @@
 
                                             <img class="img-fluid d-block mx-auto" src="{{ $game->image }}" alt="{{ $game->name }}">
                                             <p>{{ $game->description }}</p>
-                                            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger download" target="blank" href="{{ route('game')}}/{{ $game->id }}">تحميل</a>
+                                            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger download" target="blank" href="/game/{{ $game->id }}">تحميل</a>
                                             <input type="hidden" value="{{$game->id}}">
                                         </div>
                                     </div>
