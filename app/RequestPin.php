@@ -28,13 +28,13 @@ class RequestPin extends Subscription
      *
      * @var string
      * */
-    public $username = self::USERNAME;
+    public $username;
     /*
      * Password for Vlink api
      *
      * @var string
      * */
-    public $password = self::PASSWORD;
+    public $password;
     /*
      * Language id for Arabic language
      *

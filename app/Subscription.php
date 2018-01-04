@@ -238,10 +238,18 @@ class Subscription
      *****************************/
 
     /**
+     * No credit or check subscription SMS sent to the submitted dial
+     *
+     * @var string
+     */
+    const NO_CREDIT = "4";
+    /**
      * When the End-User try to enter the Token, he/she may write it wrong,
      * the system responses with InvalidPIN.
      * The system will allow the End-User to make only two trails to enter the right one,
      * then the Token will be expired.
+     *
+     * @var string
      */
     const INVALID_PIN = "6";
     /**
@@ -530,6 +538,7 @@ class Subscription
      * @var array
      */
     private static $confirmPinErrors = [
+        self::NO_CREDIT                                 => "No credit or check subscription SMS sent to the submitted dial",
         self::INVALID_PIN                               => "ال Pin Code الذى ادخلته غير صحيح",
         self::INSUFFICIENT_BALANCE                      => "رصيدك غير كافي لإتمام عملية الإشتراك",
         self::INVALID_REQUEST_ID                        => "Third Party entered an invalid request ID",
@@ -753,6 +762,7 @@ class Subscription
             foreach (self::$confirmPinErrors as $key => $value) {
                 if ($status_code == $key) {
                     if (
+                        $key == self::NO_CREDIT ||
                         $key == self::INVALID_REQUEST_ID ||
                         $key == self::PINCODE_EXPIRED ||
                         $key == self::EMPTY_REQUEST_ID ||

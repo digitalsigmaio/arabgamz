@@ -14,12 +14,12 @@
                     <h3>رقم التليفون</h3>
                 </div>
                 <div class="col-md-6">
-                    <h3>إتصالات</h3>
-                    <h3>20112551200</h3>
+                    <h3>{{ $operator }}</h3>
+                    <h3>{{ $user->ani }}</h3>
                 </div>
             </div>
-            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">إلغاء الإشتراك</a>
-            <a class="btn btn-success btn-xl text-uppercase js-scroll-trigger" href="#services">رجوع</a>
+            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="{{ route('unsubscribeUser') }}">إلغاء الإشتراك</a>
+            <a class="btn btn-success btn-xl text-uppercase js-scroll-trigger" href="{{ route('home') }}">الرجوع الى الرئيسية</a>
         </div>
     </div>
 @endsection
