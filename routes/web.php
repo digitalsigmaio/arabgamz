@@ -24,15 +24,16 @@ Route::post('/downloads', 'GameController@downloads');
 
 Route::get('/subscribe', 'SubscribeController@index')->name('subscribe');
 
-Route::get('/unsubscribe', 'SubscribeController@unsubscribe')->name('unsubscribe');
+Route::get('/unsubscribe', 'UnsubscribeController@unsubscribe')->name('unsubscribe');
+Route::post('/unsubscribe', 'UnsubscribeController@deleteUser')->name('unsubscribeUser');
+
 Route::get('/subscription', 'SubscribeController@create')->name('subscription');
 Route::post('/subscription', 'SubscribeController@sendRequest')->name('request');
 Route::get('/subscribeConfirm', 'SubscribeController@subscribeConfirm')->name('subscribeConfirm');
 Route::post('/subscribeConfirm', 'SubscribeController@confirmSubscription')->name('confirmSubscription');
 Route::get('/greetings', 'SubscribeController@greetings')->name('greetings');
-Route::get('/deleteConfirm', 'SubscribeController@deleteConfirm')->name('deleteConfirm');
 
-Route::get('/game')->name('game');
+
 Route::get('/game/{id}', 'FileController@getFile');
 
 

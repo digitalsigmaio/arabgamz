@@ -6,12 +6,6 @@ namespace App;
 
 class RequestPinResponse extends Response
 {
-    /*
-     * Default code for "EmptyUserNameOrPassword" response
-     *
-     * @var string
-     * */
-    const  EMPTY_USERNAME_OR_PASSWORD = "1";
 
     /*
      * Request id for http://arabgamz.com

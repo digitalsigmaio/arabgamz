@@ -173,21 +173,7 @@ class SubscribeController extends Controller
         //
     }
 
-    /*
-     *  Unsubsribe Form
-     * */
-    public function unsubscribe()
-    {
-        return view('unsubscribe');
-    }
 
-    /*
-     *
-     * Confirm Unsubscription*/
-    public function deleteConfirm()
-    {
-        return view('confirmation');
-    }
     /**
      * Remove the specified resource from storage.
      *

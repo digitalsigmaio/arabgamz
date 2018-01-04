@@ -4,40 +4,41 @@ namespace App;
 
 
 
-class ConfirmPinResponse extends Response
+class UnsubscribeResponse extends Response
 {
 
     /*
-     * Request id for http://arabgamz.com
+     * Not used
      *
      * @var string
      * */
     public $requestId;
+
     /*
-     * Currency code for transaction
+     * Not used
      *
      * @var string
      * */
     public $currencyCode;
+
     /*
-     * Amount of transactions in default currency
+     * Not used
      *
      * @var string
      * */
     public $amount;
+
     /*
-     * Extra data with response, default value null
+     * Not used
      *
-     * @var static
+     * @var string
      * */
     public $data;
 
-    /*
-     * Create new instance of ConfirmPinResponse
-     *
-     * @var $response
-     * @return void
-     * */
+    /**
+     * UnsubscribeResponse constructor.
+     * @param $response
+     */
     public function __construct($response)
     {
         $textList = $this->decrypt([
@@ -56,5 +57,8 @@ class ConfirmPinResponse extends Response
             $this->amount       = $textList[4];
             $this->data         = $textList[5];
         }
+
     }
+
+
 }
