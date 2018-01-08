@@ -65,7 +65,7 @@ class SubscribeController extends Controller
             $requestResponse = $requestPin->sendRequestPin();
             if(is_a($requestResponse, 'App\RequestPinResponse')){
                 $requestId = $requestResponse->requestId;
-                return redirect()->route('subscribeConfirm', compact(['requestId', 'ani', 'operator_id']));
+                return view('subscribeConfirmation', compact(['requestId', 'ani', 'operator_id']));
             } else {
                 return redirect()->back()->withErrors([$requestResponse]);
             }
@@ -78,7 +78,7 @@ class SubscribeController extends Controller
                 $requestResponse = $requestPin->sendRequestPin();
                 if(is_a($requestResponse, 'App\RequestPinResponse')){
                     $requestId = $requestResponse->requestId;
-                    return redirect()->route('subscribeConfirm', compact(['requestId', 'ani', 'operator_id']));
+                    return view('subscribeConfirmation', compact(['requestId', 'ani', 'operator_id']));
                 } else {
                     return redirect()->back()->withErrors([$requestResponse]);
                 }
@@ -126,7 +126,7 @@ class SubscribeController extends Controller
 
             Auth::login($user);
 
-            return route('greetings', compact('ani'));
+            return view('greetings', compact('ani'));
         } else {
             return redirect()->back()->withErrors([$confirmPinResponse]);
         }
