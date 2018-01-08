@@ -27,6 +27,8 @@ class FileController extends Controller
             $user->save();
 
             $game = Game::find($id);
+            $game->downloads++;
+            $game->save();
             $filename = 'game.apk';
             $filepath = public_path() . $game->src;
             return response()->download($filepath, $filename);
@@ -36,6 +38,8 @@ class FileController extends Controller
             $user->save();
 
             $game = Game::find($id);
+            $game->downloads++;
+            $game->save();
             $filename = 'game.apk';
             $filepath = public_path() . $game->src;
             return response()->download($filepath, $filename);
