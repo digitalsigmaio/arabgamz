@@ -107,8 +107,7 @@ class GameController extends Controller
     {
 
         $game = Game::find($request->gameId);
-        $game->downloads++;
-        $game->save();
+
         return response()->json(['downloads' => $game->downloads], 200);
 
     }

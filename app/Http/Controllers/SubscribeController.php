@@ -126,7 +126,7 @@ class SubscribeController extends Controller
 
             Auth::login($user);
 
-            return view('greetings', compact('ani'));
+            return view('greetings', compact(['ani', 'password']));
         } else {
             return redirect()->back()->withErrors([$confirmPinResponse]);
         }
