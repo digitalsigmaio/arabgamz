@@ -21,5 +21,18 @@
             <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="{{ route('unsubscribeUser') }}">إلغاء الإشتراك</a>
             <a class="btn btn-success btn-xl text-uppercase js-scroll-trigger" href="{{ route('home') }}">الرجوع الى الرئيسية</a>
         </div>
+        @if($errors->any())
+            <hr>
+            <div class="row">
+                <div class="alert alert-dismissible alert-danger col-md-12" style="text-align: right">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
     </div>
 @endsection
