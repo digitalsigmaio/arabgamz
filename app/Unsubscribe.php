@@ -53,15 +53,15 @@ class Unsubscribe extends Subscription
     }
 
     /*
-     * Sending requestPin to Vlink
+     * Sending unsubscribe request to Vlink
      *
-     * @param array $requestPinList
-     * @return App\RequestPinResponse | bool
+     * @param array $unsubscribeRequestList
+     * @return App\UnsubscribeResponse | bool
      * */
-    private function unsubscribe($requestPinList)
+    private function unsubscribe($unsubscribeRequestList)
     {
 
-        $response = $this->curlRequest($requestPinList, self::REQUEST_ENDPOINT);
+        $response = $this->curlRequest($unsubscribeRequestList, self::UNSUBSCRIBE_ENDPOINT);
         if($response != null){
             $unsubscribeResponse = new UnsubscribeResponse($response);
             if ($unsubscribeResponse->success()){
