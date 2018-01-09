@@ -19,8 +19,10 @@
 
                     <div class="clearfix"></div>
                     <div class="col-lg-12 text-center">
-                        <a href="{{ route('forgotPassword') }}" class="btn btn-danger">نسيت كلمة السر</a>
+
                         <button class="btn btn-primary btn-xl" type="submit">دخول</button>
+                        <a href="{{ route('forgotPassword') }}" class="btn btn-danger btn-xl">نسيت كلمة السر</a>
+
                     </div>
                 </div>
             </form>
