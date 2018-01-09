@@ -127,6 +127,10 @@ class UserController extends Controller
                     return redirect()->back()->withErrors(['تأكد من صحة رقمك و كلمة السر']);
                 }
             } else {
+                $user = User::where('ani', $ani)->first();
+                if($user){
+                    $user->delete();
+                }
                 return redirect()->back()->withErrors(['هذا الرقم غير مشترك بالخدمة']);
             }
         } else {
