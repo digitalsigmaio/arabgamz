@@ -129,6 +129,10 @@ class UserController extends Controller
                 return redirect()->back()->withErrors(['هذا الرقم غير مشترك بالخدمة']);
             }
         } else {
+            Log::useDailyfiles(storage_path() . '/logs/getStatusErrors.log');
+            Log::info([
+                'error' => $getStatusResponse,
+            ]);
             return redirect()->back()->withErrors(['هناك مشكلة فى النظام حاول مرة أخرى بعد قليل']);
         }
 
