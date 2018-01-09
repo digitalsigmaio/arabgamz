@@ -19,7 +19,7 @@ Route::get('/', 'GameController@index')->name('home');
 Route::get('/login', 'UserController@login')->name('login');
 Route::post('/login', 'UserController@authenticate')->name('authentication');
 Route::get('/logout', 'UserController@logout')->name('logout');
-Route::get('/forgotPassword', 'UserController@passwordForm')->name('forgot');
+Route::get('/forgotPassword', 'UserController@passwordForm')->name('forgotPassword');
 Route::post('/forgotPassword', 'UserController@passwordRequest')->name('passwordRequest');
 
 Route::post('/downloads', 'GameController@downloads');
