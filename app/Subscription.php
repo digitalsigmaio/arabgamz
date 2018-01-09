@@ -837,12 +837,20 @@ class Subscription
      */
     public static function confirmMessage(string $password, string $ani)
     {
-        $message = "شكراَ لإشتراكك فى خدمة ArabGamz  يمكنك الوصول الى حسابك و الإستمتاع بالخدمة من خلال زيارة موقعنا  (http://www.arabgamz.com)";
-        $message .= "أسم المستخدم ";
+        $message = "شكراَ لإشتراكك فى خدمة";
+        $message .= " (Arabgamz) ";
+        $message .=" يمكنك الوصول الى حسابك و الإستمتاع بالخدمة من خلال زيارة موقعنا ";
+        $message .=" (http://www.arabgamz.com) ";
+        $message .= " أسم المستخدم ";
         $message .= $ani;
         $message .= " كلمة السر ";
         $message .= $password;
-        $message .= " سوف يتم خصم 2 جنيه يوميا لكى تتمكن من إلغاء الإشتراك الخاص بكم الرجاء تسجيل دخول الحساب الخاص بك علي الرابط http://www.arabgamz.com/unsubscribe  والضغط على إلغاء الإشتراك أو أرسل كلمة STOP ARABGAMZ إلى 4565 لاى استفسار تواصل معنا علي help@arabgamz.com";
+        $message .= " سوف يتم خصم 2 جنيه يوميا لكى تتمكن من إلغاء الإشتراك الخاص بكم الرجاء تسجيل دخول الحساب الخاص بك علي الرابط ";
+        $message .= " (http://www.arabgamz.com/unsubscribe) ";
+        $message .= " والضغط على إلغاء الإشتراك أو أرسل كلمة ";
+        $message .= " (STOP ARABGAMZ) ";
+        $message .= " إلى 4565 لاى استفسار تواصل معنا علي ";
+        $message .= " (help@arabgamz.com) ";
 
         return $message;
     }
