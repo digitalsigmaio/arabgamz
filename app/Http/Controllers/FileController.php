@@ -19,8 +19,9 @@ class FileController extends Controller
 
         $user = Auth::user();
 
-        $now = Carbon::now();
-        $diff = $now->diffInDays($user->updated_at);
+        $last_download = $user->updated_at->format('N');
+        $now = (Carbon::now())->format('N');
+        $diff = $now - $last_download;
         if ($user->downloads < 3){
             $user->downloads++;
 

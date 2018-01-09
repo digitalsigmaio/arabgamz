@@ -27,19 +27,19 @@ class Subscription
      *
      * @var string
      * */
-    const UNSUBSCRIBE_ENDPOINT = "https://umvas.vlserv.com/BillingPlatform/VLApi/api/SubscriptionAPI/unSubscribe";
+    const UNSUBSCRIBE_ENDPOINT = "http://umvas.vlserv.com/BillingPlatformUAT/VLApi/api/SubscriptionAPI/unSubscribe";
     /*
      * SMS endpoint
      *
      * @var string
      * */
-    const SEND_SMS_ENDPOINT = "https://umvas.vlserv.com/BillingPlatform/VLApi/api/SubscriptionAPI/SendSMS";
+    const SEND_SMS_ENDPOINT = "https://umvas.vlserv.com/BillingPlatformUAT/VLApi/api/SubscriptionAPI/SendSMS";
     /*
      * GetStatus endpoint
      *
      * @var string
      * */
-    const GET_STATUS_ENDPOINT = "https://umvas.vlserv.com/BillingPlatform/VLApi/api/SubscriptionAPI/GetStatus";
+    const GET_STATUS_ENDPOINT = "https://umvas.vlserv.com/BillingPlatformUAT/VLApi/api/SubscriptionAPI/GetStatus";
     /*
      * Encryption endpoint
      *
@@ -837,8 +837,12 @@ class Subscription
      */
     public static function confirmMessage(string $password, string $ani)
     {
-        $message = "شكراَ لإشتراكك فى خدمة ArabGamz  يمكنك الوصول الى حسابك و الإستمتاع بالخدمة من خلال زيارة موقعنا  http://www.arabgamz.com" . "أسم المستخدم " . $ani . " كلمة السر " . $password
-            . " سوف يتم خصم 2 جنيه يوميا لكى تتمكن من إلغاء الإشتراك الخاص بكم الرجاء تسجيل دخول الحساب الخاص بك علي الرابط http://www.arabgamz.com/unsubscribe  والضغط على إلغاء الإشتراك أو أرسل كلمة STOP ARABGAMZ إلى 4565 لاى استفسار تواصل معنا  علي help@arabgamz.com";
+        $message = "شكراَ لإشتراكك فى خدمة ArabGamz  يمكنك الوصول الى حسابك و الإستمتاع بالخدمة من خلال زيارة موقعنا  (http://www.arabgamz.com)";
+        $message .= "أسم المستخدم ";
+        $message .= $ani;
+        $message .= " كلمة السر ";
+        $message .= $password;
+        $message .= " سوف يتم خصم 2 جنيه يوميا لكى تتمكن من إلغاء الإشتراك الخاص بكم الرجاء تسجيل دخول الحساب الخاص بك علي الرابط http://www.arabgamz.com/unsubscribe  والضغط على إلغاء الإشتراك أو أرسل كلمة STOP ARABGAMZ إلى 4565 لاى استفسار تواصل معنا علي help@arabgamz.com";
 
         return $message;
     }
