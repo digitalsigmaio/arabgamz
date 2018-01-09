@@ -33,13 +33,13 @@ class Subscription
      *
      * @var string
      * */
-    const SEND_SMS_ENDPOINT = "https://umvas.vlserv.com/BillingPlatformUAT/VLApi/api/SubscriptionAPI/SendSMS";
+    const SEND_SMS_ENDPOINT = "http://umvas.vlserv.com/BillingPlatformUAT/VLApi/api/SubscriptionAPI/SendSMS";
     /*
      * GetStatus endpoint
      *
      * @var string
      * */
-    const GET_STATUS_ENDPOINT = "https://umvas.vlserv.com/BillingPlatformUAT/VLApi/api/SubscriptionAPI/GetStatus";
+    const GET_STATUS_ENDPOINT = "http://umvas.vlserv.com/BillingPlatformUAT/VLApi/api/SubscriptionAPI/GetStatus";
     /*
      * Encryption endpoint
      *
