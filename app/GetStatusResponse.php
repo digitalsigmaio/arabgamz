@@ -64,7 +64,7 @@ class GetStatusResponse extends Response
      * @return bool
      */
     public function isActive(){
-        $data = array_shift($this->data);
+        $data = array_pop(json_decode($this->data));
         return $data->SubscriptionStatusName == "Active" ? true : false;
     }
 
