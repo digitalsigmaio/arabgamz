@@ -111,7 +111,7 @@ class UserController extends Controller
             'password' => 'required'
         ]);
 
-        $ani = $request->ani;
+        $ani = $request->number;
         $getStatus = new GetStatus($ani);
         $getStatusResponse = $getStatus->getStatusRequest();
 
