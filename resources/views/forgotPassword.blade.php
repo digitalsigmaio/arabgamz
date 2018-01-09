@@ -3,24 +3,19 @@
 @section('content')
 
         <div class="col-lg-4 col-md-6 mx-auto login-form" dir="rtl">
-            <form id="loginForm" action="{{ route('login') }}" method="post">
+            <form id="loginForm" action="{{ route('passwordRequest') }}" method="post">
                 {{ csrf_field() }}
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <input class="form-control" id="number" name="number" type="text" placeholder="رقمك *" required data-validation-required-message=".من فضلك أدخل رقمك">
-                            <p class="help-block text-danger"></p>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" id="password" name="password" type="password" placeholder="كلمة السر *" required data-validation-required-message="من فضلك أدخل كلمة السر.">
+                            <input class="form-control" id="ani" name="ani" type="text" placeholder="رقمك *" required data-validation-required-message=".من فضلك أدخل رقمك">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
 
                     <div class="clearfix"></div>
                     <div class="col-lg-12 text-center">
-                        <a href="{{ route('forgotPassword') }}" class="btn btn-danger">نسيت كلمة السر</a>
-                        <button class="btn btn-primary btn-xl" type="submit">دخول</button>
+                        <button class="btn btn-primary btn-xl" type="submit">أرسل كلمة السر</button>
                     </div>
                 </div>
             </form>

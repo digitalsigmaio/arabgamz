@@ -51,7 +51,10 @@ class GetStatus extends Subscription
     public $endIndex = "9";
 
 
-
+    /**
+     * GetStatus constructor.
+     * @param string $ani
+     */
     public function __construct(string $ani)
     {
         $textList = $this->encrypt([
@@ -71,10 +74,10 @@ class GetStatus extends Subscription
     }
 
     /*
-     * Sending unsubscribe request to Vlink
+     * Sending getStatus request to Vlink
      *
-     * @param array $unsubscribeRequestList
-     * @return App\UnsubscribeResponse | bool
+     * @param array $getStatusRequestList
+     * @return App\GetStatusResponse | bool
      * */
     private function getStatus($getStatusRequestList)
     {

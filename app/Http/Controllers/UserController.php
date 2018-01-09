@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\GetStatus;
+use App\SendSMS;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -105,7 +106,10 @@ class UserController extends Controller
         return view('login');
     }
 
-
+    /**
+     * @param Request $request
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
     public function authenticate(Request $request) {
         $this->validate($request, [
             'number' => 'required',
@@ -128,7 +132,7 @@ class UserController extends Controller
                 }
             } else {
                 $user = User::where('ani', $ani)->first();
-                if($user){
+                if($user != null){
                     $user->delete();
                 }
                 return redirect()->back()->withErrors(['هذا الرقم غير مشترك بالخدمة']);
@@ -144,7 +148,42 @@ class UserController extends Controller
 
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function passwordForm(){
+        return view('forgotPassword');
+    }
 
+    public function passwordRequest(Request $request){
+        $this->validate($request, [
+            'ani' => 'required',
+        ]);
+        $ani = $request->ani;
+        $user = User::where('ani', $ani)->first();
+
+        if($user != null){
+            $password = str_random(6);
+            $user->password = bcrypt($password);
+            $user->save();
+            $message = "* أسم المستخدم " . $ani;
+            $message .= " * كلمة السر " . $password;
+
+            $sms = new SendSMS($ani, $message);
+            $smsResponse = $sms->sendSmsRequest();
+            if(is_a($smsResponse, 'App\SendSMSResponse')){
+                return redirect()->route('login');
+            } else {
+                return redirect()->back()->withErrors([$smsResponse]);
+            }
+        } else {
+            return redirect()->back()->withErrors(['هذا الرقم غير مشترك بالخدمة']);
+        }
+    }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function logout()
     {
         Auth::logout();
