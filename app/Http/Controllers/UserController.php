@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\GetStatus;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -110,14 +111,28 @@ class UserController extends Controller
             'password' => 'required'
         ]);
 
-        if(Auth::attempt([
-            'ani' => $request->number,
-            'password' => $request->password
-        ])){
-            return redirect()->route('home');
+        $ani = $request->ani;
+        $getStatus = new GetStatus($ani);
+        $getStatusResponse = $getStatus->getStatusRequest();
+
+        if(is_a($getStatusResponse, 'App\GetStatusResponse')){
+            if ($getStatusResponse->isActive()){
+                if(Auth::attempt([
+                    'ani' => $request->number,
+                    'password' => $request->password
+                ])){
+                    return redirect()->route('home');
+                } else {
+                    return redirect()->back()->withErrors(['تأكد من صحة رقمك و كلمة السر']);
+                }
+            } else {
+                return redirect()->back()->withErrors(['هذا الرقم غير مشترك بالخدمة']);
+            }
         } else {
-            return redirect()->back()->withErrors(['تأكد من صحة رقمك و كلمة السر']);
+            return redirect()->back()->withErrors(['هناك مشكلة فى النظام حاول مرة أخرى بعد قليل']);
         }
+
+
     }
 
 
