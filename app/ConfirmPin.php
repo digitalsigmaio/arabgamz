@@ -63,8 +63,8 @@ class ConfirmPin extends Subscription
             $pinCode,
             self::CHARGE_TYPE,
             $confirmMessage
-        ]);
-
+        ]);   
+        
         if($textList){
             $this->requestId            = $textList[0];
             $this->pinCode              = $textList[1];
