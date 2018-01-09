@@ -36,18 +36,36 @@ class GetStatus extends Subscription
      * */
     public $serviceId;
 
+    /**
+     * Start index for response date
+     *
+     * @var string
+     */
+    public $startIndex = "0";
+
+    /**
+     * End index for response date
+     *
+     * @var string
+     */
+    public $endIndex = "1";
+
 
 
     public function __construct(string $ani)
     {
         $textList = $this->encrypt([
             $ani,
-            self::SERVICE_ID
+            self::SERVICE_ID,
+            $this->startIndex,
+            $this->endIndex
         ]);
 
         if($textList){
             $this->ani         = $textList[0];
             $this->serviceId   = $textList[1];
+            $this->startIndex  = $textList[2];
+            $this->endIndex    = $textList[3];
         }
 
     }
@@ -89,6 +107,8 @@ class GetStatus extends Subscription
             'Password'      => self::PASSWORD,
             'ANI'           => $this->ani,
             'ServiceId'     => $this->serviceId,
+            'StartIndex'    => $this->startIndex,
+            'EndIndex'      => $this->endIndex
         ];
 
         return $this->getStatus($getStatusRequestList);

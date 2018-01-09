@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\ConfirmPin;
 use App\RequestPin;
-use App\RequestPinResponse;
 use App\User;
 use Illuminate\Http\Request;
 use App\Subscription;
