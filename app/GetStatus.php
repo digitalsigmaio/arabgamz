@@ -48,7 +48,7 @@ class GetStatus extends Subscription
      *
      * @var string
      */
-    public $endIndex = "1";
+    public $endIndex = "9";
 
 
 
