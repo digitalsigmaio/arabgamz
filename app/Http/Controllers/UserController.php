@@ -176,7 +176,7 @@ class UserController extends Controller
             $sms = new SendSMS($ani, $message);
             $smsResponse = $sms->sendSmsRequest();
             if(is_a($smsResponse, 'App\SendSMSResponse')){
-                session()->flash(['message' => 'تم إرسال أسم المستخدم و كلمة السر الى الرقم الذي أدخلته']);
+                session()->flash('message', 'تم إرسال أسم المستخدم و كلمة السر الى الرقم الذي أدخلته');
                 return redirect()->route('login');
             } else {
                 return redirect()->back()->withErrors([$smsResponse]);
