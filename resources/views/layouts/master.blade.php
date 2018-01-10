@@ -73,6 +73,9 @@
                     </li>
                     @if(\Illuminate\Support\Facades\Auth::check())
                         <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger header-title" href="{{ route('unsubscribe') }}">إلغاء الإشتراك</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link js-scroll-trigger header-title" href="{{ route('logout') }}">تسجيل خروج</a>
                         </li>
                     @else

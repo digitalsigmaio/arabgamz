@@ -6,14 +6,17 @@
         <div class="intro-text">
             <div class="intro-lead-in">تهانينا</div>
             <div class="intro-heading">
-                <p>تم إشتراككم بنجاح في عرب جيمز دوت كوم للألعاب</p>
-                <p>أسم المستخدم الخاص بكم</p>
-                <p>{{ $ani }}</p>
-                <p>كلمة السر</p>
-                <p>{{ $password }}</p>
-                <p>تم إرسال رسالة على هاتفك بها كلمة السر</p>
+                <div class="col-md-12">تم إشتراككم بنجاح في عرب جيمز دوت كوم للألعاب</div>
+                <div class="row">
+                    <div class="col-md-6 highlight">{{ $ani }}</div>
+                    <div class="col-md-6">أسم المستخدم الخاص بكم</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 highlight">{{ $password }}</div>
+                    <div class="col-md-6">كلمة السر</div>
+                </div>
+                <div class="col-md-12">تم إرسال رسالة على هاتفك بها كلمة السر</div>
             </div>
-
         </div>
     </div>
 
