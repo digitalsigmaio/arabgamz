@@ -27,6 +27,15 @@
                 </div>
             </form>
 
+            @if(session()->get('message'))
+                <div class="row">
+                    <div class="alert alert-dismissible alert-success col-md-6 col-md-offset-3" style="text-align: right">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>{{ session()->get('message') }}</strong>.
+                    </div>
+                </div>
+            @endif
+
             @if($errors->any())
                 <hr>
                 <div class="row">
