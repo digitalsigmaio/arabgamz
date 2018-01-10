@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <input class="form-control" id="number" name="number" type="text" placeholder="رقمك *" required data-validation-required-message=".من فضلك أدخل رقمك">
+                            <input class="form-control" id="number" name="number" type="text" placeholder="أسم المستخدم *" required data-validation-required-message=".من فضلك أدخل رقمك">
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="form-group">
