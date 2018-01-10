@@ -160,6 +160,10 @@ class UserController extends Controller
             'ani' => 'required',
         ]);
         $ani = $request->ani;
+        if (strlen($ani) == 11){
+            $ani = "2" . $ani;
+        }
+
         $user = User::where('ani', $ani)->first();
 
         if($user != null){
