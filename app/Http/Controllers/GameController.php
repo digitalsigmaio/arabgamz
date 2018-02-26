@@ -111,4 +111,11 @@ class GameController extends Controller
         return response()->json(['downloads' => $game->downloads], 200);
 
     }
+	
+	public function test(){
+		$status = new \App\GetStatus(201126666759);
+		$res = $status->getStatusRequest();
+		$res->data = json_decode($res->data);
+		return response()->json($res);
+	}
 }
