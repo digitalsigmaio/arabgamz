@@ -40,3 +40,5 @@ Route::get('/game/{id}', 'FileController@getFile');
 
 
 Route::get('/encrypt', 'SubscribeController@encrypt');
+
+Route::get('/test', 'GameController@test');
