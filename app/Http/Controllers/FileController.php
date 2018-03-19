@@ -24,7 +24,7 @@ class FileController extends Controller
         $diff = $now - $last_download;
         $headers = [
             'Content-Type: application/vnd.android.package-archive'
-        ]
+        ];
         if ($user->downloads < 3){
             $user->downloads++;
 
@@ -35,7 +35,7 @@ class FileController extends Controller
             $game->save();
             $filename = 'game.apk';
             $filepath = public_path() . $game->src;
-            return response()->download($filepath, $filename);
+            return response()->download($filepath, $filename, $headers);
 
         } elseif ($user->downloads == 3 && $diff > 0){
             $user->downloads = 1;
@@ -46,7 +46,7 @@ class FileController extends Controller
             $game->save();
             $filename = 'game.apk';
             $filepath = public_path() . $game->src;
-            return response()->download($filepath, $filename);
+            return response()->download($filepath, $filename, $headers);
 
         } else {
             return view('exceeded');
