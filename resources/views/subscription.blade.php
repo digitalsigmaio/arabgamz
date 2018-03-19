@@ -29,7 +29,7 @@
                             <option id="etisalat" value="3">إتصالات</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="text-align: left">
                         <input class="form-control" id="ani" name="ani" type="text" placeholder="رقمك *" required data-validation-required-message=".من فضلك أدخل رقمك">
                         <p class="help-block text-danger"></p>
                     </div>

@@ -121,28 +121,19 @@ class UserController extends Controller
         $getStatusResponse = $getStatus->getStatusRequest();
 
         if(is_a($getStatusResponse, 'App\GetStatusResponse')){
-            if ($getStatusResponse->isActive()){
-                if(Auth::attempt([
-                    'ani' => $request->number,
-                    'password' => $request->password
-                ])){
-                    return redirect()->route('home');
-                } else {
-                    return redirect()->back()->withErrors(['تأكد من صحة رقمك و كلمة السر']);
-                }
+            if(Auth::attempt(['ani' => $request->number, 'password' => $request->password])){
+                return redirect()->route('home');
             } else {
-                $user = User::where('ani', $ani)->first();
-                if($user != null){
-                    $user->delete();
-                }
-                return redirect()->back()->withErrors(['هذا الرقم غير مشترك بالخدمة']);
+                return redirect()->back()->withErrors(['تأكد من صحة رقمك و كلمة السر']);
             }
         } else {
+
             Log::useDailyfiles(storage_path() . '/logs/getStatusErrors.log');
             Log::info([
                 'error' => $getStatusResponse,
             ]);
             return redirect()->back()->withErrors(['هناك مشكلة فى النظام حاول مرة أخرى بعد قليل']);
+
         }
 
 
