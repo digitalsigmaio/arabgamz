@@ -22,6 +22,9 @@ class FileController extends Controller
         $last_download = $user->updated_at->format('N');
         $now = (Carbon::now())->format('N');
         $diff = $now - $last_download;
+        $headers = [
+            'Content-Type: application/vnd.android.package-archive'
+        ]
         if ($user->downloads < 3){
             $user->downloads++;
 
