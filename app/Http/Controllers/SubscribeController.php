@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ConfirmPin;
 use App\RequestPin;
+use App\SendSMS;
 use App\User;
 use Illuminate\Http\Request;
 use App\Subscription;
@@ -122,6 +123,10 @@ class SubscribeController extends Controller
             $user->operator_id = $operator_id;
 
             $user->save();
+            $message = "* أسم المستخدم " . $ani;
+            $message .= " * كلمة السر " . $password;
+
+            new SendSMS($ani, $message);
 
             Auth::login($user);
 
