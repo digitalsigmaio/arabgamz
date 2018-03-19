@@ -126,7 +126,8 @@ class SubscribeController extends Controller
             $message = "* أسم المستخدم " . $ani;
             $message .= " * كلمة السر " . $password;
 
-            new SendSMS($ani, $message);
+            $sms = new SendSMS($ani, $message);
+            $sms->sendSmsRequest();
 
             Auth::login($user);
 
