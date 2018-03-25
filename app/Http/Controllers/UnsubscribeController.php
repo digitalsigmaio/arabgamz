@@ -52,18 +52,23 @@ class UnsubscribeController extends Controller
         ]);
 
         if ($request->token == Unsubscribe::TOKEN) {
-            $user = User::where('ani', $request->ani)->firstOrFail();
-
-            try {
-                $user->delete();
-                return response()->json([
-                    'message' => 'User has been unsubscribed successfully'
-                ], 200);
-            } catch (QueryException $e) {
-                return response()->json([
-                    'message' => $e->getMessage()
-                ], 500);
-            }
+		
+            if($user = User::where('ani', $request->ani)->first()){
+				try {
+					$user->delete();
+					return response()->json([
+						'message' => 'User has been unsubscribed successfully'
+					], 200);
+				} catch (QueryException $e) {
+					return response()->json([
+						'message' => $e->getMessage()
+					], 500);
+				}
+			} else {
+				return response()->json([
+                'message' => 'User not found with the requested ANI'
+            ], 404);
+			}
         } else {
             return response()->json([
                 'message' => 'Authentication failed'
