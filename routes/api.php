@@ -19,4 +19,4 @@ Route::post('/login', 'UserController@login');
 Route::post('/games', 'GameController@store');
 Route::post('/categories', 'CategoryController@store');
 
-Route::delete('/unsubscribeUser', 'UnsubscribeController@remoteUnsubscribe');
+Route::post('/unsubscribeUser', 'UnsubscribeController@remoteUnsubscribe');
