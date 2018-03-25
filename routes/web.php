@@ -29,6 +29,7 @@ Route::get('/subscribe', 'SubscribeController@index')->name('subscribe');
 Route::get('/unsubscribe', 'UnsubscribeController@unsubscribe')->name('unsubscribe');
 Route::get('/unsubscribeUser', 'UnsubscribeController@deleteUser')->name('unsubscribeUser');
 
+
 Route::get('/subscription', 'SubscribeController@create')->name('subscription');
 Route::post('/subscription', 'SubscribeController@sendRequest')->name('request');
 Route::get('/subscribeConfirm', 'SubscribeController@subscribeConfirm')->name('subscribeConfirm');

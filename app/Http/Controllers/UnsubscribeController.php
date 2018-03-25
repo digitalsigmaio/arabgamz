@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Unsubscribe;
 use App\UnsubscribeResponse;
+use App\User;
+use Doctrine\DBAL\Query\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,5 +41,27 @@ class UnsubscribeController extends Controller
         } else {
             return redirect()->back()->withErrors([$unsubscribeResponse]);
         }
+    }
+
+    public function remoteUnsubscribe(Request $request)
+    {
+
+        $request->validate([
+            'ANI' => 'required'
+        ]);
+
+        $user = User::where('ani', $request->ani)->first();
+
+        try {
+            $user->delete();
+            return response()->json([
+                'message' => 'User has been unsubscribed successfully'
+            ], 200);
+        } catch (QueryException $e) {
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 500);
+        }
+
     }
 }
