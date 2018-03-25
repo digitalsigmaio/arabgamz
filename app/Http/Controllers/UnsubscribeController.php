@@ -13,7 +13,7 @@ class UnsubscribeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['remoteUnsubcribe']]);
     }
 
     public function unsubscribe()
@@ -47,21 +47,27 @@ class UnsubscribeController extends Controller
     {
 
         $request->validate([
-            'ANI' => 'required'
+            'ani' => 'required',
+            'token' => 'required'
         ]);
 
-        $user = User::where('ani', $request->ani)->first();
+        if ($request->token == Unsubscribe::TOKEN) {
+            $user = User::where('ani', $request->ani)->firstOrFail();
 
-        try {
-            $user->delete();
+            try {
+                $user->delete();
+                return response()->json([
+                    'message' => 'User has been unsubscribed successfully'
+                ], 200);
+            } catch (QueryException $e) {
+                return response()->json([
+                    'message' => $e->getMessage()
+                ], 500);
+            }
+        } else {
             return response()->json([
-                'message' => 'User has been unsubscribed successfully'
-            ], 200);
-        } catch (QueryException $e) {
-            return response()->json([
-                'message' => $e->getMessage()
-            ], 500);
+                'message' => 'Authentication failed'
+            ], 403);
         }
-
     }
 }

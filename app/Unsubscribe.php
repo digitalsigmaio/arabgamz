@@ -36,7 +36,7 @@ class Unsubscribe extends Subscription
      * */
     public $serviceId;
 
-
+    const TOKEN = 'vP4CPVPhNQ0lcYma4VchRqo9lpRNEPGzBcylIfKayFI=';
 
     public function __construct(string $ani)
     {
