@@ -13,7 +13,7 @@ class UnsubscribeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['remoteUnsubcribe']]);
+        $this->middleware('auth', ['except' => ['remoteUnsubscribe']]);
     }
 
     public function unsubscribe()
